@@ -8,6 +8,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.netology.pages.Elements;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TextTest {
 
     private AndroidDriver driver;
@@ -29,17 +30,17 @@ public class TextTest {
     }
 
     @Test
+    @Order(1)
     public void emptyTextTest() {
         Elements elements = new Elements(driver);
-        elements.textInput.sendKeys("Hello!");
-        elements.changeTextButton.click();
+        elements.textToInput("Hello!");
         Assertions.assertEquals("Hello!", elements.newText.getText());
-        elements.textInput.sendKeys(" ");
-        elements.changeTextButton.click();
+        elements.textToInput(" ");
         Assertions.assertEquals("Hello!", elements.newText.getText());
     }
 
     @Test
+    @Order(2)
     public void newActivityTest() {
         Elements elements = new Elements(driver);
         elements.textInput.sendKeys("Good Afternoon!");

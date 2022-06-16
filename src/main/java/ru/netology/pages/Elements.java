@@ -32,4 +32,13 @@ public class Elements {
         PageFactory.initElements(new AppiumFieldDecorator(driver, Duration.ofSeconds(15)), this);
     }
 
+    ;
+
+    public void textToInput(String textToInput) {
+        Elements elements = new Elements(driver);
+        elements.textInput.sendKeys(textToInput);
+        elements.changeTextButton.click();
+    }
 }
+
+
